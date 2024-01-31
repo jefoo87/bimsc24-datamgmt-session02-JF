@@ -1,5 +1,9 @@
 <!-- the script is where the js code goes -->
 <script>
+
+import { ref } from "vue";
+
+let text = ref("inputText")
 const main = document.querySelector("#main")
 
 function getSpaces(text){
@@ -30,7 +34,7 @@ function insertMoo(text){
 }
 
 function doSomething() {
-    let inputText = insertMoo(input.value)
+    let inputText = insertMoo(text)
     console.log(inputText)
     //create p element
     let para = document.createElement("p")
@@ -64,7 +68,7 @@ function doSomething() {
           <br><br> 
           <input v-model = "inputText" placeholder="Input Text Here">
           <br><br>
-          <button>Transcribe</button>
+          <button @click="doSomething">Transcribe</button>
         
         
         </div>
@@ -123,6 +127,7 @@ img{
     
     width:30%;
     border-color: white;
+    background-color: rgb(59, 59, 59);
 
 }
 

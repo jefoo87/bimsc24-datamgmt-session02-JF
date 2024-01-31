@@ -34,7 +34,7 @@ function insertMoo(text){
 }
 
 function doSomething() {
-    let inputText = insertMoo(ref.$ref.inputText)
+    let inputText = insertMoo(inputText.value)
     console.log(inputText)
     //create p element
     let para = document.createElement("p")

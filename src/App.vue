@@ -34,7 +34,7 @@ function insertMoo(text){
 }
 
 function doSomething() {
-    let inputText = insertMoo(text)
+    let inputText = insertMoo(ref.$ref.inputText)
     console.log(inputText)
     //create p element
     let para = document.createElement("p")
@@ -66,7 +66,7 @@ function doSomething() {
 
         <div id="sidebar" class="container"> <h3>Input Text to be Transcribed by the Cows Here:</h3> 
           <br><br> 
-          <input v-model = "inputText" placeholder="Input Text Here">
+          <textarea id="inputText" ref = "inputText" v-model = "inputText" placeholder="Input Text Here"></textarea>
           <br><br>
           <button @click="doSomething">Transcribe</button>
         

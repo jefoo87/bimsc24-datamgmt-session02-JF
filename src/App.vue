@@ -1,6 +1,44 @@
 <!-- the script is where the js code goes -->
 <script>
+const main = document.querySelector("#main")
 
+function getSpaces(text){
+    startIndex = 0
+    indices = []
+    index = 0
+    for(let i =0; i < text.length; i++){
+        if(text[i] == " "){
+        indices.push(i)
+        }
+    }
+    console.log(indices)
+    return indices
+}
+
+
+function insertMoo(text){
+    textLength = text.length
+    mooAmount = Math.ceil(text.length / 20)
+    for(let j = 0; j < mooAmount; j++){
+        spaceIndex = getSpaces(text)
+        insertPoint = spaceIndex[Math.floor(Math.random()*spaceIndex.length)]
+        text = text.slice(0,insertPoint) + " MOO!" + text.slice(insertPoint)
+        mooAmount -= 1
+    }
+    console.log(text)
+    return text
+}
+
+function doSomething() {
+    let inputText = insertMoo(input.value)
+    console.log(inputText)
+    //create p element
+    let para = document.createElement("p")
+    //fill p element with text from bar
+    para.innerHTML = inputText
+    //append element to main
+    main.appendChild(para)
+}
 
 </script>
 
@@ -26,7 +64,7 @@
           <br><br> 
           <input v-model = "inputText" placeholder="Input Text Here">
           <br><br>
-          <b-button></b-button>
+          <button>Transcribe</button>
         
         
         </div>

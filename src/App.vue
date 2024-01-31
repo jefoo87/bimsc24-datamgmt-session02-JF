@@ -1,77 +1,6 @@
 <!-- the script is where the js code goes -->
 <script>
-import { ref } from "vue";
-const doc = document.documentElement;
 
-doc.style.fontFamily = "arial"
-
-let input = document.createElement("input")
-input.style.width = "100%"
-input.style.height = "30%"
-input.style.fontSize = "12pt"
-sidebar.appendChild(input)
-
-
-let submitButton = document.createElement("button")
-sidebar.appendChild(submitButton)
-submitButton.innerHTML = "Submit"
-submitButton.style.fontSize = title.fontSize
-
-
-let resetButton = document.createElement("button")
-sidebar.appendChild(resetButton)
-resetButton.innerHTML = "Reset Button"
-resetButton.style.fontSize = title.fontSize
-
-
-
-submitButton.addEventListener('click', doSomething)
-resetButton.addEventListener('click',resetMain)
-
-const main = document.querySelector("#main")
-
-function getSpaces(text){
-    startIndex = 0
-    indices = []
-    index = 0
-    for(let i =0; i < text.length; i++){
-        if(text[i] == " "){
-        indices.push(i)
-        }
-    }
-    console.log(indices)
-    return indices
-}
-
-
-function insertMoo(text){
-    textLength = text.length
-    mooAmount = Math.ceil(text.length / 20)
-    for(let j = 0; j < mooAmount; j++){
-        spaceIndex = getSpaces(text)
-        insertPoint = spaceIndex[Math.floor(Math.random()*spaceIndex.length)]
-        text = text.slice(0,insertPoint) + " MOO!" + text.slice(insertPoint)
-        mooAmount -= 1
-    }
-    console.log(text)
-    return text
-}
-
-function doSomething() {
-    let inputText = insertMoo(input.value)
-    console.log(inputText)
-    //create p element
-    let para = document.createElement("p")
-    //fill p element with text from bar
-    para.innerHTML = inputText
-    //append element to main
-    main.appendChild(para)
-    console.log("clicked submit")
-}
-
-function resetMain(){
-    main.innerHTML = ""
-}
 
 </script>
 
@@ -93,7 +22,14 @@ function resetMain(){
 
     <div id="flex">
 
-        <div id="sidebar" class="container"> <h3>Input Text to be Transcribed by the Cows Here:</h3> <br><br> </div>
+        <div id="sidebar" class="container"> <h3>Input Text to be Transcribed by the Cows Here:</h3> 
+          <br><br> 
+          <input v-model = "inputText" placeholder="Input Text Here">
+          <br><br>
+          <b-button></b-button>
+        
+        
+        </div>
 
         <div id="main" class="container"> Transcribed Text: </div>
     </div>
